@@ -8,8 +8,8 @@ use Cloudinary;
 
 class PostController extends Controller
 {
-    public function home(){
-        return view('posts/home');
+    public function home(Post $post){
+        return view('posts/home')->with(['posts' => $post->get()]);
     }
     
     public function create(){
