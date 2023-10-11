@@ -3,8 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>sunrise</title>
-        
-        <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <link  rel="stylesheet" href="/css/style.css">
     </head>
     
     <body>
@@ -13,7 +12,28 @@
             <a href="/create">投稿</a>
         </div>
         
-        <img src="https://t4.ftcdn.net/jpg/01/12/69/27/360_F_112692796_CNLQZ3j4JHXDuFnEuID2xShI5mwActLf.jpg">
+        <div id="map-canvas"></div>
+        
+        <div class="index">
+            <h2>投稿一覧</h2>
+            @foreach($posts as $post)
+                <div class="post">
+                    <img src="{{$post->image_url}}" class="image" alt="画像が読み込めません。"/>
+                    <h2>{{$post->title}}</h2>
+                    <p>{{$post->body}}</p>
+                </div>
+            @endforeach
+        </div>
+        
+        <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyAPD2t5vZx1y4Qq71BZOjSAhsPwugj2d8Q&libraries=geometry,drawing,places"></script>
+        
+        <script>
+            var mapDiv = document.getElementById( "map-canvas" ) ;
+            
+            var map = new google.maps.Map( mapDiv, {
+            center: new google.maps.LatLng( 36 , 139 ) ,
+            zoom: 8 ,
+            });
+        </script>
     </body>
-    
 </html>

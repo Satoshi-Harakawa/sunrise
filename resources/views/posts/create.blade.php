@@ -23,13 +23,13 @@
             
             <div class="Place">
                 <h2>都道府県</h2>
-                <input type="text" name="post[prefecture]" placeholder=",〇〇県など" value="" />
+                <input type="text" id="prefecture" name="post[prefecture]" placeholder=",〇〇県など" value="" />
                
                 <h2>市区町村</h2>
-                <input type="text" name="post[city]" placeholder="〇〇市〇〇町など" value="" />
+                <input type="text" id="city" name="post[city]" placeholder="〇〇市〇〇町など" value="" />
                
                 <h2>それ以下の住所</h2>
-                <input type="text" name="post[after_address]" placeholder="1-1-1など" value="" />
+                <input type="text" id="after_address" name="post[after_address]" placeholder="〇-〇-〇など" value="" />
             </div>
             
             <div class="image">
@@ -40,7 +40,7 @@
         </form>
         
         <div class="footer">
-            <a href="/">戻る</a>
+            <a href="/create">戻る</a>
         </div>
     </body>
 </html>

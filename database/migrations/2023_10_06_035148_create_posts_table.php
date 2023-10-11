@@ -15,7 +15,13 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+            $table->string('image_url')->nullable();
+            $table->string('title',50);
+            $table->string('body',200);
             $table->timestamps();
+            $table->string('prefecture')->nullable();
+            $table->string('city')->nullable();
+            $table->string('after_address')->nullable();
         });
     }
 
