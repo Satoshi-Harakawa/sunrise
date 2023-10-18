@@ -40,7 +40,7 @@
         </form>
         
         <div class="footer">
-            <a href="/create">戻る</a>
+            <a href="/">戻る</a>
         </div>
     </body>
 </html>

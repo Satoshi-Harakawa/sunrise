@@ -12,28 +12,48 @@
             <a href="/create">投稿</a>
         </div>
         
-        <div id="map-canvas"></div>
+        <div id="map"></div>
         
         <div class="index">
             <h2>投稿一覧</h2>
             @foreach($posts as $post)
-                <div class="post">
-                    <img src="{{$post->image_url}}" class="image" alt="画像が読み込めません。"/>
-                    <h2>{{$post->title}}</h2>
-                    <p>{{$post->body}}</p>
+                <div class="posts">
+                    <div class="image">
+                        <img src="{{ $post->image_url }}" alt="画像が読み込めません。"/>
+                    </div>
+                    
+                    <h1 class='title'>地名：
+                        <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
+                    </h1>
+                    <h1 class='body'>
+                        <p>{{ $post->body }}</p>
+                    </h1>
+                    
                 </div>
             @endforeach
         </div>
         
-        <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyAPD2t5vZx1y4Qq71BZOjSAhsPwugj2d8Q&libraries=geometry,drawing,places"></script>
-        
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPD2t5vZx1y4Qq71BZOjSAhsPwugj2d8Q"></script>
         <script>
-            var mapDiv = document.getElementById( "map-canvas" ) ;
+            var map;
+            var marker;
+            const position = {
+                lat: 35.65638, // 緯度
+                lng: 139.30782 // 経度
+            };
             
-            var map = new google.maps.Map( mapDiv, {
-            center: new google.maps.LatLng( 36 , 139 ) ,
-            zoom: 8 ,
-            });
+            function initMap(){
+                map = new google.maps.Map(document.getElementById('map'),{
+                    center: position,
+                    zoom: 8 // 地図のズームを指定
+                });
+                
+                marker = new google.maps.Marker({
+                    map: map,
+                    position: position,
+                });
+            }
+            initMap();
         </script>
     </body>
 </html>
