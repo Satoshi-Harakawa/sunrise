@@ -1,14 +1,47 @@
-#map-canvas {
+#map{
     width: 100% ;
     height: 600px ;
     background-position: center ;
 }
 
 body{
-    text-align: center ;
+    /*text-align: center ;*/
     background-color: lightgreen ;
 }
 
-.iamge{
-    
+img{
+    width: 500px ;
+    height: 500px ;
+    object-fit: cover ;
+}
+
+.image{
+    /*position: absolute ;*/
+    top: 50px ;
+    /*left: 100px;*/
+    display: block ;
+}
+
+.post h2{
+    font-size: 50px ;
+}
+
+.title p{
+    display: inline-block ;
+}
+
+.posts{
+    position: relative ;
+}
+
+.title{
+    position: absolute ;
+    top: 100px ;
+    right: 100px ;
+}
+
+.body{
+    position: absolute ;
+    top: 300px ;
+    right: 100px ;
 }

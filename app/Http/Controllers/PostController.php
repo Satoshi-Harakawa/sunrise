@@ -25,4 +25,9 @@ class PostController extends Controller
         return redirect('/');
         
     }
+    
+    public function show(Post $post){
+        $api_key = config('app.api_key');
+        return view('posts/show')->with(['post' => $post, 'api_key' => $api_key]);
+    }
 }
