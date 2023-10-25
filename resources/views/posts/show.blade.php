@@ -11,17 +11,21 @@
         
         <div id="map" class="map"></div>
         
-        <div class="post">
+        <div class="posts">
             <img src="{{ $post->image_url }}" class="image" alt="画像が読み込めません。"/>
-            <h1 class="title">{{ $post->title }}</h1>
-            <h1 class="title">{{ $post->body }}</h1>
+            <h1 class="title">地名：{{ $post->title }}</h1>
+            <h1 class="body">本文：{{ $post->body }}</h1>
         </div>
         
-        {{--<div place>
-            <p id="prefecture" value="{{$post->prefecture}}"></p>
-            <p id="city" value="{{$post->city}}"></p>
-            <p id="after_address" value="{{$post->after_address}}"></p>
-        </div>--}}
+        <div class = "edit">
+            <a href="/posts/{{$post->id}}/edit">編集</a>
+        </div>
+        
+        <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post">
+            @csrf
+            @method('DELETE')
+            <button type="button" onclick="deletePost({{ $post->id }})">削除</button> 
+        </form>
         
         <div class="footer">
             <a href="/">戻る</a>
@@ -35,7 +39,6 @@
             var geocoder;
         
             var address = '{{$post->prefecture}}{{$post->city}}{{$post->after_address}}';
-            var address = '東京都八王子市千人町4-3-19';
             
             function initMap(){
                 geocoder = new google.maps.Geocoder();
@@ -62,6 +65,14 @@
                 });
             }
             initMap();
+        </script>
+        <script>
+            function deletePost(id) {
+                'use strict'
+                if (confirm('削除すると復元できません。\n本当に削除しますか？')) {
+                    document.getElementById(`form_${id}`).submit();
+                }
+            }
         </script>
     </body>
 </html>

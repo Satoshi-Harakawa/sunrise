@@ -25,9 +25,7 @@
                     <h1 class='title'>地名：
                         <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
                     </h1>
-                    <h1 class='body'>
-                        <p>{{ $post->body }}</p>
-                    </h1>
+                    <h1 class='body'>本文：{{ $post->body }}</h1>
                     
                 </div>
             @endforeach
@@ -41,6 +39,7 @@
                 lat: 35.65638, // 緯度
                 lng: 139.30782 // 経度
             };
+            
             
             function initMap(){
                 map = new google.maps.Map(document.getElementById('map'),{
