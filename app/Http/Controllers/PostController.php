@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
 use App\Models\Post;
+use App\Models\User;
 use Cloudinary;
 
 class PostController extends Controller
@@ -26,7 +27,8 @@ class PostController extends Controller
         
         $input = $request['post'];
         $image_url = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
-        $input += ['image_url' => $image_url];  
+        $input += ['image_url' => $image_url];
+        $input += ['user_id' => $request->user()->id ];
         $post->fill($input)->save();
         return redirect('/');
         
@@ -44,6 +46,9 @@ class PostController extends Controller
     public function update(PostRequest $request, Post $post)
     {
         $input_post = $request['post'];
+        $image_url = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
+        $input_post += ['image_url' => $image_url];
+        $input_post += ['user_id' => $request->user()->id];
         $post->fill($input_post)->save();
         return redirect('/posts/' . $post->id);
     }
@@ -51,5 +56,14 @@ class PostController extends Controller
     public function delete(Post $post){
         $post->delete();
         return redirect('/');
+    }
+    
+    public function user_home(User $user, Post $post){
+        $address_list = array();
+        $posts = $user->posts()->get();
+        foreach ($posts as $post) {
+            array_push($address_list, ($post->prefecture).($post->city).($post->after_address));
+        }
+        return view('posts/user_home')->with(['posts' =>  $user->posts()->get(),'address_list' => $address_list]);
     }
 }
