@@ -1,11 +1,11 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <title>sunrise</title>
-        <link  rel="stylesheet" href="/css/style.css">
-    </head>
-    
+<head>
+    <link rel="stylesheet" href="{{ asset('/css/style.css')  }}" >
+</head>
+
+<x-app-layout>
+    <x-slot name="header">
+        　投稿詳細
+    </x-slot>
     <body>
         <h1>投稿詳細</h1>
         
@@ -31,13 +31,13 @@
             <a href="/">戻る</a>
         </div>
         
+        
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPD2t5vZx1y4Qq71BZOjSAhsPwugj2d8Q"></script>
         <script>
             
             var map;
             var marker;
             var geocoder;
-        
             var address = '{{$post->prefecture}}{{$post->city}}{{$post->after_address}}';
             
             function initMap(){
@@ -45,13 +45,10 @@
                 geocoder.geocode( {'address': address}, function(results, status) {
                     if (status === 'OK'&& results[0]) {
                         
-                    
                         map = new google.maps.Map(document.getElementById('map'),{
                             center: results[0].geometry.location,
                             zoom: 8 // 地図のズームを指定
                         });
-                        
-                        console.log(results[0]);
                         
                         marker = new google.maps.Marker({
                             map: map,
@@ -75,4 +72,4 @@
             }
         </script>
     </body>
-</html>
+</x-app-layout>

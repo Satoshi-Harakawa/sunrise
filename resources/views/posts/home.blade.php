@@ -1,13 +1,12 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <title>sunrise</title>
-        <link  rel="stylesheet" href="/css/style.css">
-    </head>
-    
-    <body>
-        <h1>日の出</h1>
+<head>
+    <link rel="stylesheet" href="{{ asset('/css/style.css')  }}" >
+</head>
+
+<x-app-layout>
+    <x-slot name="header">
+        ホーム
+    </x-slot>
+        <h1 class="title">日の出</h1>
         <div class="create">
             <a href="/create">投稿</a>
         </div>
@@ -29,7 +28,10 @@
                     
                 </div>
             @endforeach
+            
+            <p>{{ Auth::user()->name }}</p>
         </div>
+        
         
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPD2t5vZx1y4Qq71BZOjSAhsPwugj2d8Q"></script>
         <script>
@@ -39,7 +41,7 @@
                 lat: 35.65638, // 緯度
                 lng: 139.30782 // 経度
             };
-            
+            var markerData = @json($address_list);
             
             function initMap(){
                 map = new google.maps.Map(document.getElementById('map'),{
@@ -47,12 +49,18 @@
                     zoom: 8 // 地図のズームを指定
                 });
                 
-                marker = new google.maps.Marker({
-                    map: map,
-                    position: position,
-                });
+                for(var i=0; i<markerData.length; i++){
+                    geocoder = new google.maps.Geocoder();
+                    geocoder.geocode( {'address': markerData[i]}, function(results, status) {
+                        if (status === 'OK'&& results[0]) {
+                            marker[i] = new google.maps.Marker({
+                                map: map,
+                                position: results[0].geometry.location,
+                            });
+                        }
+                    });
+                }
             }
             initMap();
         </script>
-    </body>
-</html>
+</x-app-layout>

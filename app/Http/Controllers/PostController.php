@@ -10,7 +10,12 @@ use Cloudinary;
 class PostController extends Controller
 {
     public function home(Post $post){
-        return view('posts/home')->with(['posts' => $post->get()]);
+        $address_list = array();
+        $posts = Post::get();
+        foreach ($posts as $post) {
+            array_push($address_list, ($post->prefecture).($post->city).($post->after_address));
+        }
+        return view('posts/home')->with(['posts' => $post->get(),'address_list' => $address_list]);
     }
     
     public function create(){
