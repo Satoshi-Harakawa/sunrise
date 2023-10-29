@@ -12,24 +12,21 @@
         </div>
         
         <div id="map"></div>
-        
+            <h2>の投稿一覧<h2>
         <div class="index">
-            <h2>投稿一覧</h2>
             @foreach($posts as $post)
                 <div class="posts">
                     <div class="image">
                         <img src="{{ $post->image_url }}" alt="画像が読み込めません。"/>
                     </div>
                     
-                    <a href="/posts/{{ $post->user_id }}/home" class='user_name'>{{ $post->user->name }}</a>
-                    <h1 class='title'>地名：
+                    <a href="/posts/{{ $post->user_id }}" class='user_name'>{{ $post->user->name }}</a>
+                    {{--<h1 class='title'>地名：
                         <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
-                    </h1>
+                    </h1>--}}
                     
                 </div>
             @endforeach
-            
-            <p>{{ Auth::user()->name }}</p>
         </div>
         
         
