@@ -1,0 +1,35 @@
+.container {
+    width: 100%;
+    /* 必要に応じて他のスタイルを追加 */
+}
+
+.item-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px; /* 各行の間隔 */
+}
+
+.item-image {
+    width: 50%; /* または具体的なサイズ、例: 100px */
+    max-width: 100%; /* 画像がコンテナをはみ出さないように */
+    height: auto; /* アスペクト比を保持 */
+}
+
+.text-content {
+    flex: 1; /* 残りの空間をテキストコンテンツに割り当て */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* タイトルは上、本文は下に配置 */
+    margin-left: 20px; /* 画像との間隔 */
+}
+
+.item-title {
+    /* 必要に応じてタイトルのスタイルを追加 */
+    margin-left: 100px; /*仮*/
+    margin-bottom: 150px; /*仮*/
+}
+
+.item-text {
+    /* 必要に応じて本文のスタイルを追加 */
+    margin-left: 100px; /*仮*/
+}
