@@ -3,7 +3,6 @@
         投稿
     </x-slot>
     <body class="antialiased">
-        <h1>投稿</h1>
         <form action="/posts" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="title">

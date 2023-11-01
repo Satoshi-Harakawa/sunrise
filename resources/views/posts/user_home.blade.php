@@ -4,29 +4,25 @@
 
 <x-app-layout>
     <x-slot name="header">
-        ホーム
+        {{$user->name}}の投稿
     </x-slot>
-        <h1 class="title">日の出</h1>
-        <div class="create">
-            <a href="/create">投稿</a>
-        </div>
-        
         <div id="map"></div>
-            <h2>の投稿一覧<h2>
-        <div class="index">
+        <h2>{{$user->name}}の投稿一覧<h2>
+        <div class="container">
             @foreach($posts as $post)
-                <div class="posts">
-                    <div class="image">
-                        <img src="{{ $post->image_url }}" alt="画像が読み込めません。"/>
+                <div class="item-row">
+                    <img src="{{ $post->image_url }}" alt="画像が読み込めません。" class="item-image" />
+                    <div class="text-content">
+                        <a href="/posts/{{ $post->user_id }}/home" id='item-user'>{{ $post->user->name }}</a>
+                        <a href="/posts/{{ $post->id }}" id="item-title">{{ $post->title }}</a>
+                        {{--<a href="/posts/{{ $post->id }}" id="item-address">{{ $post->prefecture }}{{ $post->city }}{{ $post->after_address }}</p>--}}
                     </div>
-                    
-                    <a href="/posts/{{ $post->user_id }}" class='user_name'>{{ $post->user->name }}</a>
-                    {{--<h1 class='title'>地名：
-                        <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
-                    </h1>--}}
-                    
                 </div>
             @endforeach
+        </div>
+        
+        <div class="footer">
+            <a href="/">戻る</a>
         </div>
         
         
@@ -50,9 +46,10 @@
                     geocoder = new google.maps.Geocoder();
                     geocoder.geocode( {'address': markerData[i]}, function(results, status) {
                         if (status === 'OK'&& results[0]) {
-                            marker[i] = new google.maps.Marker({
+                            marker = new google.maps.Marker({
                                 map: map,
                                 position: results[0].geometry.location,
+                                animation: google.maps.Animation.DROP
                             });
                         }
                     });

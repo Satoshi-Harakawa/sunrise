@@ -4,44 +4,48 @@
     background-position: center ;
 }
 
-body{
-    /*text-align: center ;*/
-    background-color: lightgreen ;
+.container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 50px;
+    /* 必要に応じて他のスタイルを追加 */
 }
 
-img{
-    width: 500px ;
-    height: 500px ;
-    object-fit: cover ;
+.item-row {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px; /* 各行の間隔 */
 }
 
-.image{
-    /*position: absolute ;*/
-    top: 50px ;
-    /*left: 100px;*/
-    display: block ;
+.item-image {
+    width: 50%; /* または具体的なサイズ、例: 100px */
+    max-width: 100%; /* 画像がコンテナをはみ出さないように */
+    height: auto; /* アスペクト比を保持 */
 }
 
-.post h2{
-    font-size: 50px ;
+.text-content {
+    flex: 1; /* 残りの空間をテキストコンテンツに割り当て */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* タイトルは上、本文は下に配置 */
+    margin-left: 20px; /* 画像との間隔 */
 }
 
-.title p{
-    display: inline-block ;
+.item-user {
+    /* 必要に応じてユーザーのスタイルを追加 */
+    margin-left: 0px; /*仮*/
+    margin-bottom: 0px; /*仮*/
 }
 
-.posts{
-    position: relative ;
+.item-title {
+    /* 必要に応じて地名のスタイルを追加 */
+    margin-left: 100px; /*仮*/
 }
 
-.title{
-    position: absolute ;
-    top: 100px ;
-    right: 300px ;
-}
-
-.body{
-    position: absolute ;
-    top: 300px ;
-    right: 300px ;
+.btn{
+    display:block;
+    text-align: center;
+    width: 100%;
 }
