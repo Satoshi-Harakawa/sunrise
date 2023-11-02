@@ -35,44 +35,44 @@
                 lat: 35.65638, // 緯度
                 lng: 139.30782 // 経度
             };
-            var markerData = @json($address_list);
-            var placeData = @json($place_list);
+            let markerData = @json($address_list);
+            let placeData = @json($place_list);
+            let userData = @json($user_list);
+            let postIdData = @json($post_id_list);
             
             function initMap(){
                 map = new google.maps.Map(document.getElementById('map'),{
                     center: position,
-                    zoom: 8 // 地図のズームを指定
+                    zoom: 6 // 地図のズームを指定
                 });
                 
                 for(let i=0; i<markerData.length; i++){
-                    console.log(i);
                     geocoder = new google.maps.Geocoder();
                     geocoder.geocode( {'address': markerData[i]}, function(results, status) {
                         if (status === 'OK'&& results[0]) {
-                            console.log(results[0]);
                             marker = new google.maps.Marker({
                                 map: map,
                                 position: results[0].geometry.location,
                                 animation: google.maps.Animation.DROP
                             });
-                            
-                            console.log(i);
-                            attachMessage(marker,placeData[i]);
+                            attachMessage(marker,placeData[i],markerData[i],userData[i],postIdData[i]);
                         }
                     });
                 }
             }
             
-            function attachMessage(marker, msg) {
+            function attachMessage(marker,msg1,msg2,msg3,msg4) {
                 google.maps.event.addListener(marker, 'click', function(event) {
-                    new google.maps.InfoWindow({
-                    content: msg
-                    }).open(marker.getMap(), marker);
+                    infowindow = new google.maps.InfoWindow({
+                        content: '地名：'+msg1+'<br>'+'住所：'+msg2+'<br>'+'<div class="post_link">'+'<a href="/posts/'+msg4+'">'+msg3+'による投稿'+'</a>'+'</div>'+'<br>'
+                                +'<div class="googlemap_link">'+'<a href="https://www.google.com/maps/search/?api=1&query='+msg1+'">googleマップで詳細検索</a>'+'</div>'
+                    }).open(map, marker);    //open(marker.getMap(),marker)
                 });
+                
+                {{--google.maps.event.addListener(marker, 'click', function(event){
+                    infowindow.close(map,marker);
+                });--}}
             }
-            
-            
-            console.log(placeData);
             
             initMap();
         </script>

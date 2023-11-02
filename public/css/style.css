@@ -1,6 +1,6 @@
 #map{
     width: 100% ;
-    height: 600px ;
+    height: 1000px ;
     background-position: center ;
 }
 
@@ -46,6 +46,14 @@
 
 .btn{
     display:block;
+    margin: 20px 550px;
     text-align: center;
-    width: 100%;
+    padding:8px 24px;
+    color:white;
+    opacity:0.8;
+    background-color: lightgreen;
+}
+
+.googlemap_link , .post_link{
+    color: blue;
 }
