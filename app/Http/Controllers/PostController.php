@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Category;
 use Cloudinary;
 
 class PostController extends Controller
@@ -24,11 +25,11 @@ class PostController extends Controller
             array_push($post_id_list,($post->id));
         }
         return view('posts/home')->with(['posts' => $post->get(),'address_list' => $address_list,
-                                         'place_list'=> $place_list,'user_list'=>$user_list,'post_id_list'=>$post_id_list]);
+        'place_list'=> $place_list,'user_list'=>$user_list,'post_id_list'=>$post_id_list]);
     }
     
-    public function create(){
-        return view('posts/create');
+    public function create(Category $category){
+        return view('posts/create')->with(['categories' => $category->get()]);
     }
     
     public function store(Request $request,Post $post){
@@ -69,11 +70,41 @@ class PostController extends Controller
     public function user_home(User $user, Post $post){
         $address_list = array();
         $place_list = array();
+        $user_list = ($user->name);
+        $post_id_list = array();
+        
         $posts = $user->posts()->get();
         foreach ($posts as $post) {
             array_push($address_list, ($post->prefecture).($post->city).($post->after_address));
             array_push($place_list, ($post->title));
+            array_push($post_id_list,($post->id));
         }
-        return view('posts/user_home')->with(['posts' =>  $posts,'address_list' => $address_list,'user' => $user,'place_list'=> $place_list]);
+        return view('posts/user_home')->with(['posts' =>  $posts,'address_list' => $address_list,'user' => $user,
+        'place_list'=> $place_list,'user_list'=>$user_list,'post_id_list'=>$post_id_list]);
+    }
+    
+    public function place_search(Request $request,Category $category){
+        $category_id = $request->input('category');
+        $prefecture = $request->input('prefecture');
+        $keyword = $request->input('keyword');
+        
+        $query = Post::query();
+        
+        if(!empty($category_id)) {
+            $query->where('category_id',"{$category_id}");
+        }
+        
+        if(!empty($prefecture)) {
+            $query->where('prefecture', 'LIKE', "%{$prefecture}%");
+        }
+        
+        if(!empty($keyword)) {
+            $query->where('title', 'LIKE', "%{$keyword}%")
+                  ->orWhere('body', 'LIKE', "%{$keyword}%");
+        }
+
+        $posts = $query->get();
+        return view('posts/place_search')->with(['posts'=>$posts,'categories' => $category->get(),
+        'keyword'=> $keyword,'prefecture'=> $prefecture]);
     }
 }
