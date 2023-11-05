@@ -34,10 +34,10 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPD2t5vZx1y4Qq71BZOjSAhsPwugj2d8Q"></script>
     <script>
         
-        var map;
-        var marker;
-        var geocoder;
-        var address = '{{$post->prefecture}}{{$post->city}}{{$post->after_address}}';
+        let map;
+        let marker;
+        let geocoder;
+        let address = '{{$post->prefecture}}{{$post->city}}{{$post->after_address}}';
         
         function initMap(){
             geocoder = new google.maps.Geocoder();

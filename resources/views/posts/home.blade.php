@@ -1,5 +1,5 @@
 <head>
-    <link rel="stylesheet" href="{{ asset('/css/style.css')  }}" >
+    <link rel="stylesheet" href="{{ asset('/css/home_style.css')  }}" >
 </head>
 
 <x-app-layout>
@@ -29,16 +29,14 @@
                 <div class="item-row">
                     <img src="{{ $post->image_url }}" alt="画像が読み込めません。" class="item-image"/>
                     <div class="text-content">
-                        <p class="item-user">{{ $post->user->name }}の投稿</p>
-                        <a href="/posts/{{ $post->user_id }}/home" class="item-user-link">{{ $post->user->name }}の投稿一覧へ</a>
+                        <p class="item-user">{{ $post->user->name }}さんの投稿</p>
+                        <a href="/posts/{{ $post->user_id }}/home" class="item-user-link">{{ $post->user->name }}さんの投稿一覧へ</a>
                         <p class="item-title">{{ $post->title }}</p>
                         <a href="/posts/{{ $post->id }}" class="item-title-link">この投稿の詳細へ</a>
-                        {{--<a href="/posts/{{ $post->id }}" id="item-address">{{ $post->prefecture }}{{ $post->city }}{{ $post->after_address }}</p>--}}
                     </div>
                 </div>
             @endforeach
         </div>
-        
         
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPD2t5vZx1y4Qq71BZOjSAhsPwugj2d8Q"></script>
         <script>
@@ -77,7 +75,7 @@
             function attachMessage(marker,msg1,msg2,msg3,msg4) {
                 google.maps.event.addListener(marker, 'click', function(event) {
                     infowindow = new google.maps.InfoWindow({
-                        content: '地名：'+msg1+'<br>'+'住所：'+msg2+'<br>'+'<div class="post_link">'+'<a href="/posts/'+msg4+'">'+msg3+'による投稿を見る'+'</a>'+'</div>'+'<br>'
+                        content: '地名：'+msg1+'<br>'+'住所：'+msg2+'<br>'+'<div class="post_link">'+'<a href="/posts/'+msg4+'">'+msg3+'さんによる投稿を見る'+'</a>'+'</div>'+'<br>'
                                 +'<div class="googlemap_link">'+'<a href="https://www.google.com/maps/search/?api=1&query='+msg1+'">googleマップで詳細検索</a>'+'</div>'
                     }).open(map, marker);    //open(marker.getMap(),marker)
                 });
