@@ -10,24 +10,34 @@
     <div>
         <form action="/search" method="GET">
             @csrf
-            <div class="category_search">地域カテゴリ
-                <select class="form-control" name="category">
-                    <option value="">条件なし</option>
-                    @foreach ($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->category_name }}地方</option>
-                    @endforeach
-                </select>
+            <div class="search-container">
+                <div class="category-search">
+                    <p class="category-title">地域カテゴリ</p>
+                    <select class="category-select" name="category">
+                        <option value="0" selected>選択してください</option>
+                        <option value="0">全国</option>
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->category_name }}地方</option>
+                        @endforeach
+                    </select>
+                </div>
+                
+                <div class="prefecture-search">
+                    <p class-"prefecture-title">都道府県を入力</p>
+                    <input type="text" name="prefecture" value="{{ $prefecture }}">
+                </div>
+                
+                <div class="place-search">
+                    <p class="place-title">地名・特徴を入力</p>
+                    <input type="text" name="keyword" value="{{ $keyword }}">
+                </div>
             </div>
-            
-            <div class="prefecture_search">都道府県を入力
-                <input type="text" name="prefecture" value="{{ $prefecture }}">
-            </div>
-            
-            <div class="place_search">地名を入力
-                <input type="text" name="keyword" value="{{ $keyword }}">
-                <input type="submit" value="検索">
-            </div>
+            <input type="submit" value="検索">
         </form>
+    </div>
+    
+    <div class="title-text">
+        <p>検索結果</p>
     </div>
     
     <div class="container">
@@ -43,5 +53,5 @@
             </div>
         @endforeach
     </div>
-
+    
 </x-app-layout>

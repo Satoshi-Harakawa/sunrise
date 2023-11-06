@@ -83,6 +83,33 @@ class PostController extends Controller
         'place_list'=> $place_list,'user_list'=>$user_list,'post_id_list'=>$post_id_list]);
     }
     
+    public function place_map(Request $request,Category $category,Post $post){
+        $address_list = array();
+        $place_list = array();
+        $user_list = array();
+        $post_id_list = array();
+        
+        $category_id = $request->input('category');
+        $query = Post::query();
+        
+        if(!empty($category_id)) {
+            $query->where('category_id',"{$category_id}");
+        }
+        
+        $posts = $query->get();
+        
+        foreach ($posts as $post) {
+            array_push($address_list, ($post->prefecture).($post->city).($post->after_address));
+            array_push($place_list, ($post->title));
+            array_push($user_list,($post->user->name));
+            array_push($post_id_list,($post->id));
+        }
+      
+        return view('posts/place_map')->with(['posts' => $posts,'address_list' => $address_list,
+        'place_list'=> $place_list,'user_list'=>$user_list,'post_id_list'=>$post_id_list,
+        'categories' => $category->get(),'category_id'=>$category_id]);
+    }
+    
     public function place_search(Request $request,Category $category){
         $category_id = $request->input('category');
         $prefecture = $request->input('prefecture');
@@ -95,16 +122,19 @@ class PostController extends Controller
         }
         
         if(!empty($prefecture)) {
-            $query->where('prefecture', 'LIKE', "%{$prefecture}%");
+            $query = $query->where('prefecture','LIKE',"%{$prefecture}%");
         }
         
         if(!empty($keyword)) {
-            $query->where('title', 'LIKE', "%{$keyword}%")
-                  ->orWhere('body', 'LIKE', "%{$keyword}%");
+            $query->where('title','LIKE',"%{$keyword}%");
+        }
+        
+        if(!empty($keyword)){
+            $query->Where('body','LIKE',"%{$keyword}%");
         }
 
         $posts = $query->get();
-        return view('posts/place_search')->with(['posts'=>$posts,'categories' => $category->get(),
-        'keyword'=> $keyword,'prefecture'=> $prefecture]);
+        return view('posts/place_search')->with(['posts' => $posts,'categories' => $category->get(),
+        'keyword' => $keyword,'prefecture' => $prefecture]);
     }
 }

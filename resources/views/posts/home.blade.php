@@ -7,6 +7,7 @@
         全国マップ
     </x-slot>
         <div class="title-text">
+            <p>日本全国の絶景投稿ブログです！</p>
             <p>全ての投稿が<span class="span-marker">マーカー</span>として表示されています！</p>
             <p><span class="span-marker">マーカー</span>をクリックすると詳細が見られます！</p>
             <p>投稿したい場合は、すぐ下の<span class="span-btn">投稿ボタン</span>から！</p>
