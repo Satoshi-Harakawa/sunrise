@@ -124,3 +124,9 @@ h2{
 .googlemap_link , .post_link{
     color: blue;
 }
+
+.search-container{
+    display: flex;
+    align-items: center;
+}
+

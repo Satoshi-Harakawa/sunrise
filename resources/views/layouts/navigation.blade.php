@@ -16,7 +16,10 @@
                         {{ __('ダッシュボード') }}
                     </x-nav-link>
                     <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
-                        {{ __('ホーム') }}
+                        {{ __('ホーム（全国マップ）') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('place_map')" :active="request()->routeIs('place_map')">
+                        {{ __('地域別マップ') }}
                     </x-nav-link>
                     <x-nav-link :href="route('place_search')" :active="request()->routeIs('place_search')">
                         {{ __('投稿検索') }}

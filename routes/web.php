@@ -22,6 +22,7 @@ Route::get('/dashboard', function () {
 Route::controller(PostController::class)->middleware(['auth'])->group(function(){
     Route::get('/','home')->name('home');
     Route::get('/search','place_search')->name('place_search');
+    Route::get('/map','place_map')->name('place_map');
     Route::get('/create','create')->name('create');
     Route::get('/posts/{post}','show')->name('show');
     Route::post('/posts','store')->name('store');
