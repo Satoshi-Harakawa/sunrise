@@ -16,40 +16,45 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
+        // DB::table('categories')->insert([
+        // 'category_name' => '北海道',
+        // 'created_at' => new DateTime(),
+        // 'updated_at' => new DateTime(),
+        // ]);
+        // DB::table('categories')->insert([
+        // 'category_name' => '東北',
+        // 'created_at' => new DateTime(),
+        // 'updated_at' => new DateTime(),
+        // ]);
+        // DB::table('categories')->insert([
+        // 'category_name' => '関東',
+        // 'created_at' => new DateTime(),
+        // 'updated_at' => new DateTime(),
+        // ]);
+        // DB::table('categories')->insert([
+        // 'category_name' => '中部',
+        // 'created_at' => new DateTime(),
+        // 'updated_at' => new DateTime(),
+        // ]);
+        // DB::table('categories')->insert([
+        // 'category_name' => '近畿',
+        // 'created_at' => new DateTime(),
+        // 'updated_at' => new DateTime(),
+        // ]);
+        // DB::table('categories')->insert([
+        // 'category_name' => '中国・四国',
+        // 'created_at' => new DateTime(),
+        // 'updated_at' => new DateTime(),
+        // ]);
+        // DB::table('categories')->insert([
+        // 'category_name' => '九州',
+        // 'created_at' => new DateTime(),
+        // 'updated_at' => new DateTime(),
+        // ]);
         DB::table('categories')->insert([
-        'category_name' => '北海道',
-        'created_at' => new DateTime(),
-        'updated_at' => new DateTime(),
-        ]);
-        DB::table('categories')->insert([
-        'category_name' => '東北',
-        'created_at' => new DateTime(),
-        'updated_at' => new DateTime(),
-        ]);
-        DB::table('categories')->insert([
-        'category_name' => '関東',
-        'created_at' => new DateTime(),
-        'updated_at' => new DateTime(),
-        ]);
-        DB::table('categories')->insert([
-        'category_name' => '中部',
-        'created_at' => new DateTime(),
-        'updated_at' => new DateTime(),
-        ]);
-        DB::table('categories')->insert([
-        'category_name' => '近畿',
-        'created_at' => new DateTime(),
-        'updated_at' => new DateTime(),
-        ]);
-        DB::table('categories')->insert([
-        'category_name' => '中国・四国',
-        'created_at' => new DateTime(),
-        'updated_at' => new DateTime(),
-        ]);
-        DB::table('categories')->insert([
-        'category_name' => '九州',
-        'created_at' => new DateTime(),
-        'updated_at' => new DateTime(),
+            'category_name' => '南西諸島',
+            'created_at' => new DateTime(),
+            'updated_at' => new DateTime(),
         ]);
     }
 }

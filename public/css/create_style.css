@@ -1,0 +1,124 @@
+.title-text{
+    margin-top: 20px;
+    text-align: center;
+    font-size: 30px;
+}
+
+.form-container{
+    margin-top: 50px;
+    margin-left: 350px;
+}
+
+.title{
+    font-size: 30px;
+}
+
+.title-input{
+    height: 50px;
+    width: 300px;
+}
+
+.body{
+    margin-top: 30px;
+    font-size: 30px;
+}
+
+.body-textarea{
+    height: 100px;
+    width: 500px;
+}
+
+.image p{
+    margin-top: 30px;
+    font-size: 30px;
+}
+
+.category{
+    margin-top: 50px;
+    font-size: 30px;
+}
+
+.category p{
+    margin-bottom: 30px;
+    font-size: 30px;
+}
+
+.prefecture{
+    margin-top: 30px;
+    font-size: 30px;
+}
+
+.prefecture-input{
+    width: 300px;
+}
+
+.city{
+    margin-top: 20px;
+    font-size: 30px;
+}
+.city-input{
+    width: 300px;
+}
+
+.after-address{
+    margin-top: 20px;
+    font-size: 30px;
+}
+
+.after-address-input{
+    width: 300px;
+}
+
+form .formbottom {
+	text-align: center;
+}
+
+form .btns{
+	display: inline-block;
+	vertical-align: middle;
+	margin: 0 auto;
+	padding: 6px 25px;
+	color: #F15A24;
+	font-weight: bold;
+	letter-spacing: 0.5pt;
+	text-decoration: none;
+	background-color: #ffffff;
+	border: 1px solid #F15A24;
+	cursor: pointer;
+	transition-duration:0.3s;
+    -webkit-transition-duration:0.3s;
+    -moz-transition-duration:0.3s;
+    -o-transition-duration:0.3s;
+    -ms-transition-duration:0.3s;
+} 
+
+form .btns:hover{
+    color: #ffffff;
+    background-color: #F15A24;
+}
+
+.btn2{
+    display:block;
+    margin-top: 20px;
+    margin-right: 1000px;
+    margin-bottom: 30px;
+    margin-left: 80px;
+    text-align: center;
+    padding:8px 24px;
+    color:white;
+    opacity: 0.8;
+    background-color: #008080;
+    box-shadow: 2px 2px black;
+    border-radius: 5px
+}
+
+.btn2:hover{
+    opacity: 1.0;
+}
+
+.btn2:active{
+    position: relative;
+    box-shadow: None;
+    top: 2px;
+    left: 2px;
+}
