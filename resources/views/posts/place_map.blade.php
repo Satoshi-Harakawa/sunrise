@@ -3,16 +3,15 @@
 </head>
 
 <x-app-layout>
-    <x-slot name="header">
-        地域別マップ
-    </x-slot>
     <div class="title-text">
+        <p>地域を選択できます！</p>
         <p>地域別の投稿が<span class="span-marker">マーカー</span>として表示されています！</p>
         <p><span class="span-marker">マーカー</span>をクリックすると詳細が見られます！</p>
     </div>
         
     <div>
         <form action="/map" method="GET">
+            <a href="#map">全体を見る</a>
             @csrf
             <div class="category_search">地域カテゴリ
                 <select class="form-control" name="category" onchange="submit(this.form)">
@@ -26,36 +25,9 @@
             
         </form>
     </div>
-    <?php
-        $height = "1250px";
-        if($category_id != null){
-            switch($category_id){
-                case 1:
-                    $height = "600px";
-                    break;
-                case 2:
-                    $height = "600px";
-                    break;
-                case 3:
-                    $height = "600px";
-                    break;
-                case 4:
-                    $height = "950px";
-                    break;
-                case 5:
-                    $height = "600px";
-                    break;
-                case 6:
-                    $height = "700px";
-                    break;
-                case 7:
-                    $height = "700px";
-                    break;
-            }
-        }
-    ?>
+
     <div class="googlemap">
-        <div id="map" style="height:{{$height}};" ></div>
+        <div id="map" ></div>
     </div>
     
     <div class="title-text">
@@ -68,7 +40,6 @@
                 <img src="{{ $post->image_url }}" alt="画像が読み込めません。" class="item-image"/>
                 <div class="text-content">
                     <p class="item-user">{{ $post->user->name }}さんの投稿</p>
-                    <a href="/posts/{{ $post->user_id }}/home" class="item-user-link">{{ $post->user->name }}さんの投稿一覧へ</a>
                     <p class="item-title">{{ $post->title }}</p>
                     <a href="/posts/{{ $post->id }}" class="item-title-link">この投稿の詳細へ</a>
                 </div>
@@ -81,7 +52,7 @@
         let map;
         let marker;
         const position = [
-            {lat: 36.67872, lng: 139.01732 },//全国
+            {lat: 36.33464, lng: 136.35591 },//全国
             {lat: 43.54245, lng: 142.61078 },//北海道
             {lat: 39.22273, lng: 140.62641 },//東北
             {lat: 35.89281, lng: 139.54392 },//関東
@@ -89,9 +60,10 @@
             {lat: 34.61287, lng: 135.66127 },//近畿
             {lat: 34.23611, lng: 132.93584 },//中国・四国
             {lat: 32.58636, lng: 130.70927 },//九州
+            {lat: 28.06854, lng: 129.36997 },//南西諸島
         ];
         
-        const zoom = [6,7,7,8,8,8,8,8];
+        const zoom = [5,7,7,8,7,8,7,7,7];
         
         let markerData = @json($address_list);
         let placeData = @json($place_list);

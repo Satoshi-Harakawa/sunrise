@@ -3,12 +3,8 @@
 </head>
 
 <x-app-layout>
-    <x-slot name="header">
-        投稿検索
-    </x-slot>
-    
     <div>
-        <form action="/search" method="GET">
+        <form action="/placesearch" method="GET">
             @csrf
             <div class="search-container">
                 <div class="category-search">
@@ -29,7 +25,7 @@
                 
                 <div class="place-search">
                     <p class="place-title">地名・特徴を入力</p>
-                    <input type="text" name="keyword" value="{{ $keyword }}">
+                    <input type="text" name="keyword" placeholder="＜例＞橋" value="{{ $keyword }}">
                 </div>
             </div>
             <input type="submit" value="検索">

@@ -1,19 +1,29 @@
 <head>
-    <link rel="stylesheet" href="{{ asset('/css/style.css')  }}" >
+    <link rel="stylesheet" href="{{ asset('/css/show_style.css')  }}" >
 </head>
 
 <x-app-layout>
     <x-slot name="header">
         　投稿詳細
     </x-slot>
-    <h1>投稿詳細</h1>
+    <div class="title-text">
+        <p>投稿詳細</p>
+    </div>
     
-    <div id="map" class="map"></div>
+    <div class="container">
+        <div class="image-container">
+            <img src="{{ $post->image_url }}" alt="画像が読み込めません。" class="item-image"/>
+        </div>
+        <div class="googlemap">
+            <div id="map"></div>
+        </div>
+    </div>
     
-    <div class="posts">
-        <img src="{{ $post->image_url }}" class="image" alt="画像が読み込めません。"/>
-        <h1 class="title">地名：{{ $post->title }}</h1>
-        <h1 class="body">本文：{{ $post->body }}</h1>
+    <div class="item-row">
+        <div class="text-content">
+            <p class="item-title">{{ $post->title }}</p>
+            <p class="item-body">{{ $post->body }}</p>
+        </div>
     </div>
     
     <div class = "edit">

@@ -48,8 +48,8 @@ class PostController extends Controller
         return view('posts/show')->with(['post' => $post, 'api_key' => $api_key]);
     }
     
-    public function edit(Post $post){
-        return view('posts/edit')->with(['post' => $post]);
+    public function edit(Post $post,Category $category){
+        return view('posts/edit')->with(['post' => $post, 'categories' => $category->get()]);
     }
     
     public function update(PostRequest $request, Post $post)
@@ -136,5 +136,15 @@ class PostController extends Controller
         $posts = $query->get();
         return view('posts/place_search')->with(['posts' => $posts,'categories' => $category->get(),
         'keyword' => $keyword,'prefecture' => $prefecture]);
+    }
+    
+    public function user_index(User $user,Post $post){
+        $users = User::get();
+        foreach ($users as $user) {
+            dd($user);
+        }
+        $post = $user->posts();
+        
+        return view('posts/user_index')->with(['users' => $users,'posts' => $post]);
     }
 }
