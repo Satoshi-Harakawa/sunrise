@@ -3,6 +3,7 @@
 </head>
 
 <x-app-layout>
+    <div class="body">
         <div class="title-text">
             <p>日本全国の絶景投稿ブログです！</p>
             <p>全ての投稿が<span class="span-marker">マーカー</span>として表示されています！</p>
@@ -19,7 +20,8 @@
         <div class="googlemap">
             <div id="map"></div>
         </div>
-        
+    </div>
+    <div class="body-low">
         <div class="title-text2">
             <p>投稿一覧</p>
         </div>    
@@ -37,7 +39,7 @@
                 </div>
             @endforeach
         </div>
-        
+    </div>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPD2t5vZx1y4Qq71BZOjSAhsPwugj2d8Q"></script>
         <script>
             let map;
