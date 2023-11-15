@@ -48,6 +48,11 @@ class PostController extends Controller
         return view('posts/show')->with(['post' => $post, 'api_key' => $api_key]);
     }
     
+    public function usershow(Post $post){
+        $api_key = config('app.api_key');
+        return view('users/user_show')->with(['post' => $post, 'api_key' => $api_key]);
+    }
+    
     public function edit(Post $post,Category $category){
         return view('posts/edit')->with(['post' => $post, 'categories' => $category->get()]);
     }
@@ -65,22 +70,6 @@ class PostController extends Controller
     public function delete(Post $post){
         $post->delete();
         return redirect('/');
-    }
-    
-    public function user_home(User $user, Post $post){
-        $address_list = array();
-        $place_list = array();
-        $user_list = ($user->name);
-        $post_id_list = array();
-        
-        $posts = $user->posts()->get();
-        foreach ($posts as $post) {
-            array_push($address_list, ($post->prefecture).($post->city).($post->after_address));
-            array_push($place_list, ($post->title));
-            array_push($post_id_list,($post->id));
-        }
-        return view('posts/user_home')->with(['posts' =>  $posts,'address_list' => $address_list,'user' => $user,
-        'place_list'=> $place_list,'user_list'=>$user_list,'post_id_list'=>$post_id_list]);
     }
     
     public function place_map(Request $request,Category $category,Post $post){
@@ -126,25 +115,13 @@ class PostController extends Controller
         }
         
         if(!empty($keyword)) {
-            $query->where('title','LIKE',"%{$keyword}%");
+            $query->where('title','LIKE',"%{$keyword}%")
+                  ->orWhere('body','LIKE',"%{$keyword}%");
         }
         
-        if(!empty($keyword)){
-            $query->Where('body','LIKE',"%{$keyword}%");
-        }
-
         $posts = $query->get();
         return view('posts/place_search')->with(['posts' => $posts,'categories' => $category->get(),
         'keyword' => $keyword,'prefecture' => $prefecture]);
     }
     
-    public function user_index(User $user,Post $post){
-        $users = User::get();
-        foreach ($users as $user) {
-            dd($user);
-        }
-        $post = $user->posts();
-        
-        return view('posts/user_index')->with(['users' => $users,'posts' => $post]);
-    }
 }

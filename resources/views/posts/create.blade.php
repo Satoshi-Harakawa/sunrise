@@ -48,7 +48,7 @@
                 <h2>それ以下の住所</h2>
                 <input type="text" id="after_address" name="post[after_address]" class="after-address-input" placeholder="＜例＞1-1-1" value="" />
             </div>
-            
+         
             <p class="formbottom">
                 <input type="submit" value="投稿" class="btns submit"/>
             </p>

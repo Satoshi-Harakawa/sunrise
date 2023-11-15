@@ -3,7 +3,7 @@
 </head>
 
 <x-app-layout>
-    <div>
+    <div class="search-container">
         <form action="/placesearch" method="GET">
             @csrf
             <div class="search-container">
@@ -28,7 +28,9 @@
                     <input type="text" name="keyword" placeholder="＜例＞橋" value="{{ $keyword }}">
                 </div>
             </div>
-            <input type="submit" value="検索">
+            <div class="btn4back">
+                <input type="submit" value="検索" class="btn4">
+            </div>
         </form>
     </div>
     
@@ -42,7 +44,6 @@
                 <img src="{{ $post->image_url }}" alt="画像が読み込めません。" class="item-image"/>
                 <div class="text-content">
                     <p class="item-user">{{ $post->user->name }}さんの投稿</p>
-                    <a href="/posts/{{ $post->user_id }}/home" class="item-user-link">{{ $post->user->name }}さんの投稿一覧へ</a>
                     <p class="item-title">{{ $post->title }}</p>
                     <a href="/posts/{{ $post->id }}" class="item-title-link">この投稿の詳細へ</a>
                 </div>

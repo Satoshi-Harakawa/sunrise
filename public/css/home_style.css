@@ -13,9 +13,27 @@
 }
 
 .title-text{
-    margin-top: 20px;
+    margin-top: 50px;
     text-align: center;
     font-size: 30px;
+}
+
+.title-text2{
+    margin-top: 200px;
+    text-align: center;
+    font-size: 30px;
+}
+
+.title-text3{
+    margin-top: 50px;
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 40px;
+}
+
+.search-container{
+    display:flex;
+    justify-content:center
 }
 
 .span-marker{
@@ -23,7 +41,7 @@
 }
 
 .span-btn{
-    color: #008080;
+    color: #F15A24;
 }
 
 h2{
@@ -44,7 +62,7 @@ h2{
     width: 50%;
     display: flex;
     align-items: center;
-    margin-bottom: 30px; /* 各行の間隔 */
+    margin-bottom: 80px; /* 各行の間隔 */
     border-bottom:  solid 1px #C0C0C0;
     padding-bottom: 30px;
 }
@@ -64,6 +82,7 @@ h2{
     flex-direction: column;
     justify-content: space-between; /* タイトルは上、本文は下に配置 */
     margin-left: 20px; /* 画像との間隔 */
+    margin-right: 30px;
 }
 
 .item-user {
@@ -73,12 +92,6 @@ h2{
     font-size: 20px;
 }
 
-.item-user-link{
-    margin: 0 0 0 auto; /*仮*/
-    margin-bottom: 40px; /*仮*/
-    font-size: 15px;
-    color: blue;
-}
 
 .item-title {
     /* 必要に応じて地名のスタイルを追加 */
@@ -94,9 +107,12 @@ h2{
     color: blue;
 }
 
-.btn{
+.btn2{
     display:block;
-    margin: 20px 550px;
+    width: 16%;
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 30px;
     text-align: center;
     padding:8px 24px;
     color:white;
@@ -106,17 +122,76 @@ h2{
     border-radius: 5px
 }
 
-.btn:hover{
+.btn2:hover{
     opacity: 1.0;
 }
 
-.btn:active{
+.btn2:active{
     position: relative;
     box-shadow: None;
     top: 2px;
     left: 2px;
 }
 
+.btn1back {
+	text-align: center;
+}
+
+.btn1{
+	display: inline-block;
+	vertical-align: middle;
+	margin-top: 40px;
+	margin-right: 0 auto;
+	margin-bottom: 60px;
+	padding: 6px 25px;
+	color: #F15A24;
+	font-weight: bold;
+	letter-spacing: 0.5pt;
+	text-decoration: none;
+	background-color: #ffffff;
+	border: 1px solid #F15A24;
+	cursor: pointer;
+	transition-duration:0.3s;
+    -webkit-transition-duration:0.3s;
+    -moz-transition-duration:0.3s;
+    -o-transition-duration:0.3s;
+    -ms-transition-duration:0.3s;
+} 
+
+.btn1:hover{
+    color: #ffffff;
+    background-color: #F15A24;
+}
+
+.btn4back {
+	text-align: center;
+}
+
+.btn4{
+	display: inline-block;
+	vertical-align: middle;
+	margin-top: 40px;
+	margin-right: 0 auto;
+	margin-bottom: 60px;
+	padding: 6px 25px;
+	color: #008080;
+	font-weight: bold;
+	letter-spacing: 0.5pt;
+	text-decoration: none;
+	background-color: #ffffff;
+	border: 1px solid #008080;
+	cursor: pointer;
+	transition-duration:0.3s;
+    -webkit-transition-duration:0.3s;
+    -moz-transition-duration:0.3s;
+    -o-transition-duration:0.3s;
+    -ms-transition-duration:0.3s;
+} 
+
+.btn4:hover{
+    color: #ffffff;
+    background-color: #008080;
+}
 
 .googlemap_link , .post_link{
     color: blue;

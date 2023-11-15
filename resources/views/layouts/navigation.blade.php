@@ -24,11 +24,11 @@
                     <x-nav-link :href="route('create')" :active="request()->routeIs('create')">
                         {{ __('投稿する') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('user_index')" :active="request()->routeIs('user_index')">
-                        {{ __('ユーザーリスト') }}
-                    </x-nav-link>
                     <x-nav-link :href="route('place_search')" :active="request()->routeIs('place_search')">
                         {{ __('投稿検索') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('user_home')" :active="request()->routeIs('user_home')">
+                        {{ __('マイページ') }}
                     </x-nav-link>
                 </div>
             </div>
