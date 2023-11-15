@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Post;
+use Auth; 
 
 class User extends Authenticatable
 {
@@ -45,5 +46,9 @@ class User extends Authenticatable
     
     public function posts(){
         return $this -> hasMany(Post::class);
+    }
+    
+    public function getUserHome(){
+        return $this::with('posts')->find(Auth::id())->posts()->get();
     }
 }

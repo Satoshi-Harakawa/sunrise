@@ -9,14 +9,18 @@
             <p><span class="span-marker">マーカー</span>をクリックすると詳細が見られます！</p>
             <p>投稿したい場合は、すぐ下の<span class="span-btn">投稿ボタン</span>から！</p>
         </div>
-    
-        <a href="/create" class="btn">投稿</a>
+        
+        <div class="btn1back">
+            <a href="/create" class="btn1">投稿</a>
+        </div>
+        
+        <a href="#map" class="btn2">地図全体を見る</a>
         
         <div class="googlemap">
             <div id="map"></div>
         </div>
         
-        <div class="title-text">
+        <div class="title-text2">
             <p>投稿一覧</p>
         </div>    
             

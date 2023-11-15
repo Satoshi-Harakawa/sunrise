@@ -3,15 +3,14 @@
 </head>
 
 <x-app-layout>
-    <div class="title-text">
+    <div class="title-text3">
         <p>地域を選択できます！</p>
         <p>地域別の投稿が<span class="span-marker">マーカー</span>として表示されています！</p>
         <p><span class="span-marker">マーカー</span>をクリックすると詳細が見られます！</p>
     </div>
         
-    <div>
+    <div class="search-container">
         <form action="/map" method="GET">
-            <a href="#map">全体を見る</a>
             @csrf
             <div class="category_search">地域カテゴリ
                 <select class="form-control" name="category" onchange="submit(this.form)">
@@ -22,9 +21,10 @@
                     @endforeach
                 </select>
             </div>
-            
         </form>
     </div>
+    
+    <a href="#map" class="btn2">地図全体を見る</a>
 
     <div class="googlemap">
         <div id="map" ></div>
